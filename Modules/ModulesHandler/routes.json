@@ -1,0 +1,38 @@
+{
+    "/module/create": {
+        "type": 1,
+        "controller": "\\Modules\\ModulesHandler\\Controller\\Web\\Create",
+        "params": [ "POST" ],
+        "protected": true
+    },
+    "/module/update": {
+        "type": 1,
+        "controller": "\\Modules\\ModulesHandler\\Controller\\Web\\Update",
+        "params": [ "POST" ],
+        "protected": true
+    },
+    "/module/delete": {
+        "type": 1,
+        "controller": "\\Modules\\ModulesHandler\\Controller\\Web\\Delete",
+        "params": [ "POST" ],
+        "protected": true
+    },
+    "create-module": {
+        "type": 1,
+        "controller": "\\Modules\\ModulesHandler\\Controller\\Cli\\Create",
+        "params": [],
+        "protected": true
+    },
+    "delete-module": {
+        "type": 1,
+        "controller": "\\Modules\\ModulesHandler\\Controller\\Cli\\Delete",
+        "params": [],
+        "protected": true
+    },
+    "update-module": {
+        "type": 1,
+        "controller": "\\Modules\\ModulesHandler\\Controller\\Cli\\Update",
+        "params": [],
+        "protected": true
+    }
+}

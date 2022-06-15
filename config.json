@@ -1,0 +1,28 @@
+{
+    "host": "local.development.me",
+    "port": 80,
+    "dev": true,
+    "modules": true,
+    "cacheDir": "cache/",
+    "storage": {
+        "database": {
+            "host": "localhost",
+            "port": 5432,
+            "username": "tree",
+            "password": "randompassword",
+            "database": "randomdatabase",
+            "driver": "pgsql"
+        },
+        "memcached": {
+            "enabled": true,
+            "servers": [
+                { "host": "127.0.0.1", "port": "11211" }
+            ]
+        }
+    },
+    "cryptService": {
+        "passphrase": "randompassword",
+        "algorythm": "aes-256-cbc",
+        "initvector": "sadk3m1LskdwiI9"
+    }
+}

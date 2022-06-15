@@ -1,0 +1,84 @@
+{
+    "context": {
+        "class": "\\Core\\Context",
+        "constructor-args": {
+            "1": [
+                { 
+                    "type": "class", 
+                    "value": "\\Core\\Application",
+                    "arguments": [
+                        { "type": "class", "value": "\\Core\\Router", "arguments": [] },
+                        { "type": "class", "value": "\\Core\\Display", "arguments": [] }
+                    ] 
+                },
+                {
+                    "type": "class",
+                    "value": "\\Web\\HttpRequest",
+                    "arguments": [
+                        { "type": "static-method", "value": "\\Services\\ApplicationService::getCurrentRoute", "arguments": [] },
+                        { "type": "static-method", "value": "\\Services\\ApplicationService::getCurrentMethod", "arguments": [] },
+                        { "type": "static-method", "value": "\\Services\\ApplicationService::getCurrentHeaders", "arguments": [] },
+                        { "type": "static-method", "value": "\\Services\\ApplicationService::getCurrentCookies", "arguments": [] },
+                        { "type": "static-method", "value": "\\Services\\ApplicationService::getCurrentData", "arguments": [] }
+                    ]
+                }
+            ],
+            "2": [
+                {
+                    "type": "class",
+                    "value": "\\Core\\Application",
+                    "arguments": [
+                        { "type": "class", "value": "\\Core\\Router", "arguments": [] },
+                        { "type": "class", "value": "\\Core\\Display", "arguments": [] }
+                    ]
+                },
+                {
+                    "type": "class",
+                    "value": "\\Cli\\Request",
+                    "arguments": [
+                        { "type": "static-method", "value": "\\Services\\ApplicationService::getCurrentRoute", "arguments": [] },
+                        { "type": "static-method", "value": "\\Services\\ApplicationService::getCurrentData", "arguments": [] }
+                    ]
+                }
+            ]
+        }
+    },
+    "wrapper.db-connection": {
+        "class": "\\Core\\DependencyInjection\\Wrapper",
+        "constructor-args": {
+            "pgsql": [
+                {
+                    "type": "class",
+                    "value": "\\Core\\Database\\PgSQLConnection",
+                    "arguments": [
+                        { "type": "static-method", "value": "\\Config\\DatabaseConfig::get", "arguments": [ { "type": "static-value", "value": "database" } ] },
+                        { "type": "static-method", "value": "\\Config\\DatabaseConfig::get", "arguments": [ { "type": "static-value", "value": "host" } ] },
+                        { "type": "static-method", "value": "\\Config\\DatabaseConfig::get", "arguments": [ { "type": "static-value", "value": "port" } ] }
+                    ]
+                }
+            ],
+            "mysql": [
+                {
+                    "type": "class",
+                    "value": "\\Core\\Database\\MySQLConnection",
+                    "arguments": [
+                        { "type": "static-method", "value": "\\Config\\DatabaseConfig::get", "arguments": [ { "type": "static-value", "value": "database" } ] },
+                        { "type": "static-method", "value": "\\Config\\DatabaseConfig::get", "arguments": [ { "type": "static-value", "value": "host" } ] },
+                        { "type": "static-method", "value": "\\Config\\DatabaseConfig::get", "arguments": [ { "type": "static-value", "value": "port" } ] }
+                    ]
+                }
+            ],
+            "sqlite": [
+                {
+                    "type": "class",
+                    "value": "\\Core\\Database\\SQLiteConnection",
+                    "arguments": [
+                        { "type": "static-method", "value": "\\Config\\DatabaseConfig::get", "arguments": [ { "type": "static-value", "value": "database" } ] },
+                        { "type": "static-method", "value": "\\Config\\DatabaseConfig::get", "arguments": [ { "type": "static-value", "value": "host" } ] },
+                        { "type": "static-method", "value": "\\Config\\DatabaseConfig::get", "arguments": [ { "type": "static-value", "value": "port" } ] }
+                    ]
+                }
+            ]
+        }
+    }
+}

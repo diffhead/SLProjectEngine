@@ -1,0 +1,9 @@
+vendor/
+cache/
+static/
+frontend/bundle/**
+**/node_modules/
+log/**
+
+**/package-lock.json
+**/package.lock

@@ -1,13 +1,18 @@
 <?php namespace Modules\AuthModule;
 
-use Core\RouterProvider;
 use Core\AbstractModule;
+
+use Core\Router\Route;
+use Core\Router\RouteCollection;
 
 class AuthModule extends AbstractModule
 {
-    public function init(): void
+    public function registerRoutes(): RouteCollection
     {
-        $routerProvider = new RouterProvider();
-        $routerProvider->setRoutesFromJsonFile($this->path . 'routes.json');
+        return new RouteCollection([
+            new Route('/api/login', Route::TYPE_RAW, '\\Modules\\AuthModule\\Controller\\Login', [ 'POST' ], true, true),
+            new Route('/api/logout', Route::TYPE_RAW, '\\Modules\\AuthModule\\Controller\\Logout', [ 'GET' ], true, true),
+            new Route('/api/register', Route::TYPE_RAW, '\\Modules\\AuthModule\\Controller\\Register', [ 'POST' ], true, true)
+        ]);
     }
 }

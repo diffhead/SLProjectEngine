@@ -1,4 +1,4 @@
-<?php namespace Core;
+<?php namespace Core\Router;
 
 class Router
 {

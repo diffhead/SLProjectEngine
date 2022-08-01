@@ -1,8 +1,11 @@
-<?php namespace Core;
+<?php namespace Core\Router;
+
+use Interfaces\CollectionItem;
 
 use Services\StringService;
+use Services\ClassService;
 
-class Route
+class Route implements CollectionItem
 {
     const TYPE_RAW = 1;
     const TYPE_REGEX = 2;
@@ -28,6 +31,22 @@ class Route
         $this->params = $params;
         $this->protected = $protected;
         $this->authorized = $authorized;
+    }
+
+    public function getValue(string $prop): mixed 
+    {
+        $getterMethod = 'get' . ucfirst($prop);
+
+        if ( ClassService::methodExists($this, $getterMethod) ) {
+            return $this->$getterMethod();
+        }
+
+        return null;
+    }
+
+    public function getUniqueId(): string
+    {
+        return $this->getRoute();
     }
 
     public function getRoute(): string

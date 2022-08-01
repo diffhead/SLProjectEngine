@@ -1,8 +1,0 @@
-{
-    "cache-flush": {
-        "type": 1,
-        "controller": "\\Modules\\CacheHandler\\Controller\\Flush",
-        "params": [],
-        "protected": true
-    }
-}

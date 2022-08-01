@@ -7,7 +7,7 @@
                     "type": "class", 
                     "value": "\\Core\\Application",
                     "arguments": [
-                        { "type": "class", "value": "\\Core\\Router", "arguments": [] },
+                        { "type": "class", "value": "\\Core\\Router\\Router", "arguments": [] },
                         { "type": "class", "value": "\\Core\\Display", "arguments": [] }
                     ] 
                 },
@@ -28,7 +28,7 @@
                     "type": "class",
                     "value": "\\Core\\Application",
                     "arguments": [
-                        { "type": "class", "value": "\\Core\\Router", "arguments": [] },
+                        { "type": "class", "value": "\\Core\\Router\\Router", "arguments": [] },
                         { "type": "class", "value": "\\Core\\Display", "arguments": [] }
                     ]
                 },

@@ -5,6 +5,7 @@ use ReflectionClass;
 use Models\Module as ModuleModel;
 
 use Core\Hook\HookCollection;
+use Core\Router\RouteCollection;
 
 abstract class AbstractModule
 {
@@ -14,7 +15,9 @@ abstract class AbstractModule
     protected string $path;
     protected string $namespace;
 
-    abstract public function init(): void;
+    public function init(): void 
+    {
+    }
 
     final public function __construct(ModuleModel $model)
     {
@@ -26,6 +29,11 @@ abstract class AbstractModule
         $reflectionClass = new ReflectionClass(static::class);
 
         $this->namespace = $reflectionClass->getNamespaceName();
+    }
+
+    public function registerRoutes(): RouteCollection
+    {
+        return new RouteCollection();
     }
 
     public function registerHooks(): HookCollection

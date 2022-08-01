@@ -1,7 +1,9 @@
 <?php namespace Modules\CacheHandler;
 
 use Core\AbstractModule;
-use Core\RouterProvider;
+
+use Core\Router\Route;
+use Core\Router\RouteCollection;
 
 use Core\Hook\Hook;
 use Core\Hook\HookCollection;
@@ -15,10 +17,11 @@ use Lib\Memcached;
 
 class CacheHandler extends AbstractModule
 {
-    public function init(): void
+    public function registerRoutes(): RouteCollection
     {
-        $routerProvider = new RouterProvider();
-        $routerProvider->setRoutesFromJsonFile($this->path . 'routes.json');
+        return new RouteCollection([
+            new Route('cache-flush', Route::TYPE_RAW, '\\Modules\\CacheHandler\\Controller\\Flush', [], true, true)
+        ]);
     }
 
     public function registerHooks(): HookCollection

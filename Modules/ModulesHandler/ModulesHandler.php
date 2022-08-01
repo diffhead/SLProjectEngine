@@ -1,8 +1,10 @@
 <?php namespace Modules\ModulesHandler;
 
 use Core\FileStream;
-use Core\RouterProvider;
 use Core\AbstractModule;
+
+use Core\Router\Route;
+use Core\Router\RouteCollection;
 
 use Core\Hook\Hook;
 use Core\Hook\HookCollection;
@@ -16,10 +18,16 @@ use Modules\ModulesHandler\Views\ModuleTemplate;
 
 class ModulesHandler extends AbstractModule
 {
-    public function init(): void
+    public function registerRoutes(): RouteCollection
     {
-        $routerProvider = new RouterProvider();
-        $routerProvider->setRoutesFromJsonFile($this->path . 'routes.json');
+        return new RouteCollection([
+            new Route('/module/create', Route::TYPE_RAW, '\\Modules\\ModulesHandler\\Controller\\Web\\Create', [ 'POST' ], true, true),
+            new Route('/module/update', Route::TYPE_RAW, '\\Modules\\ModulesHandler\\Controller\\Web\\Update', [ 'POST' ], true, true),
+            new Route('/module/delete', Route::TYPE_RAW, '\\Modules\\ModulesHandler\\Controller\\Web\\Delete', [ 'POST' ], true, true),
+            new Route('create-module', Route::TYPE_RAW, '\\Modules\\ModulesHandler\\Controller\\Cli\\Create', [], true, true),
+            new Route('update-module', Route::TYPE_RAW, '\\Modules\\ModulesHandler\\Controller\\Cli\\Update', [], true, true),
+            new Route('delete-module', Route::TYPE_RAW, '\\Modules\\ModulesHandler\\Controller\\Cli\\Delete', [], true, true)
+        ]);
     }
 
     public function registerHooks(): HookCollection

@@ -8,9 +8,8 @@ use ReflectionClass;
 use Interfaces\Controller;
 use Interfaces\ApplicationRequest;
 
-use Core\Router;
 use Core\Display;
-
+use Core\Router\Router;
 use Core\Hook\HookProvider;
 use Core\Log\ApplicationLogger;
 
@@ -94,10 +93,17 @@ class Application
         if ( $moduleInstance->isEnabled() ) {
             $moduleInstance->init();
             $moduleHooks = $moduleInstance->registerHooks();
+            $moduleRoutes = $moduleInstance->registerRoutes();
 
             if ( $moduleHooks->length() ) {
                 foreach ( $moduleHooks as $action ) {
                     HookProvider::register($action);
+                }
+            }
+
+            if ( $moduleRoutes->length() ) {
+                foreach ( $moduleRoutes as $route ) {
+                    $this->router->setRoute($route);
                 }
             }
 
